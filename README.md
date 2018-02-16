@@ -85,11 +85,12 @@ origin  https://github.com/Atlas7/bokeh-app-uk-road-accidents-viz.git (push)
 
 ### Option 1: Docker
 
-Use [this guide](https://github.com/heroku-examples/python-miniconda)
+- [Heroku Examples: python-miniconda](https://github.com/heroku-examples/python-miniconda)
+- [Heroku Container Registry & Runtime (Docker Deploys)](https://devcenter.heroku.com/articles/container-registry-and-runtime)
 
 ```
 $ heroku container:login
-$ heroku container:push 
+$ heroku container:push web
 ```
 
 ### Option 2: Conda Buildpack
