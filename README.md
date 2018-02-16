@@ -2,6 +2,8 @@
 
 ![bokeh-app-uk-accidents-viz-v6.gif](./assets/bokeh-app-uk-accidents-viz-v6.gif)
 
+[See live App on Heroku](https://uk-road-accidents-viz.herokuapp.com/) - work in progress...
+
 This is an interactive web application tool that enables big data visualization of the 136k+ UK Road Accidents reported during 2016 (I may expand this to cover a longer period under a separate project).
 
 - **For high level summary**: use the pan and wheel/box zoom tools to interact with the plots. Visualize the overall reported accident distributions, concentrations and locations by zooming and panning at the appropriate levels.
@@ -20,8 +22,8 @@ To ensure consistent development enviroment Anaconda package manager is used to 
 The `environment.yml` contains all the definitions. It's cloned from the [pyviz repo](https://github.com/pyviz/pyviz).
 
 ```
-conda env create --force -f environment.yml
-source activate pyviz
+$ conda env create --force -f environment.yml
+$ source activate pyviz
 ```
 
 Whenever you are done with the environment just do a `source deactivate`.
@@ -33,13 +35,13 @@ This step has already been done. But I am documenting this here anyway in case w
 Download data from the internet, as defined by the `datasets.yml` file (eg. source ZIP file, extracted CSV file name, etc). All files will get processed and stored in the `data` directory:
 
 ```
-python download_sample_data.py
+$ python download_sample_data.py
 ```
 
 Once we have the CSV file downloaded we need to do a quick Pandas manipulation, pickle and store onto disk back to the `data` directory.
 
 ```
-python pickle_sample_data.py
+$ python pickle_sample_data.py
 ```
 
 Once both steps are done we should expect to see the pickled (`.pkl` ) files in the `data` directory.
@@ -49,7 +51,7 @@ Once both steps are done we should expect to see the pickled (`.pkl` ) files in 
 Start Local Server at repository root:
 
 ```
-bokeh serve app
+$ bokeh serve app
 ```
 
 Navigate to [http://localhost:5006/app](http://localhost:5006/app) to view and interact with the web application.
@@ -59,12 +61,54 @@ Navigate to [http://localhost:5006/app](http://localhost:5006/app) to view and i
 If you would like to have a play, go to `.notebooks` directory, and just play around with notebooks:
 
 ```
-jupyter notebook
+$ jupyter notebook
 ```
 
 ## To deploy application to a cloud instance
 
-(pending...will try deploying this to Heroku shortly)
+Create a new Heroku app:
+
+```
+$ heroku login
+$ heroku create -a name-of-your-app
+$ git push heroku master
+$ heroku open
+```
+
+Ensure our `pyviz` environment is already activated. (i.e. `source activate pyviz`).
+
+Then export conda requirements to a text file `conda-requirements.txt`
+
+```
+$ conda list -e > conda-requirements.txt
+```
+
+Ensure we have a `Profile` at repos root with:
+
+```
+web: bokeh serve app --port=$PORT --host=uk-road-accidents-viz.herokuapp.com --host=* --address=0.0.0.0 --use-xheaders
+```
+
+The `app` above is our `app` folder name`. The `uk-road-accidents-viz` is our Heroku app name that we created.
+
+Push to Heroku:
+
+```
+$ git push heroku master
+```
+
+See live app:
+
+```
+$ heroku open
+```
+
+Useful resources:
+
+- [Serving interactive bokeh figure on heroku
+](https://stackoverflow.com/questions/38417200/serving-interactive-bokeh-figure-on-heroku/38447618#38447618): stackoverflow solution.
+- [fungai-react-ui](https://github.com/Atlas7/fungai-react-ui): `README` file may come in handy.
+- [conda-buildpack](https://github.com/kennethreitz/conda-buildpack): `README` says we need to have the `conda-requirements` file.
 
 ## Notes
 
