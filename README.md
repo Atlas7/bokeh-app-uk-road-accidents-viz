@@ -83,6 +83,19 @@ origin  https://github.com/Atlas7/bokeh-app-uk-road-accidents-viz.git (fetch)
 origin  https://github.com/Atlas7/bokeh-app-uk-road-accidents-viz.git (push)
 ```
 
+### Option 1: Docker
+
+Use [this guide](https://github.com/heroku-examples/python-miniconda)
+
+```
+$ heroku container:login
+$ heroku container:push 
+```
+
+### Option 2: Conda Buildpack
+
+This option currently doesn't work if conda packages are from channels other than continuum analytics. Use the Docker option instead.
+
 Add Heroku Conda Buildpack (to our existing application):
 
 ```
