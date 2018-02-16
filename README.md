@@ -83,6 +83,12 @@ origin  https://github.com/Atlas7/bokeh-app-uk-road-accidents-viz.git (fetch)
 origin  https://github.com/Atlas7/bokeh-app-uk-road-accidents-viz.git (push)
 ```
 
+Add Heroku Conda Buildpack (to our existing application):
+
+```
+$ heroku config:add BUILDPACK_URL=https://github.com/kennethreitz/conda-buildpack.git
+```
+
 Ensure our `pyviz` environment is already activated. (i.e. `source activate pyviz`).
 
 Then export conda requirements to a text file `conda-requirements.txt`
