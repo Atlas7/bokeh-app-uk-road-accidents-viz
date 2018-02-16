@@ -1,0 +1,7 @@
+---
+
+data:
+  - url: http://data.dft.gov.uk/road-accidents-safety-data/dftRoadSafety_Accidents_2016.zip
+    title: '2016 Road Safety Data - Accidents 2016'
+    files:
+      - dftRoadSafety_Accidents_2016.csv

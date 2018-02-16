@@ -1,0 +1,35 @@
+name: pyviz
+channels:
+  - cball
+  - ioam
+  - bokeh
+  - conda-forge
+  - defaults
+dependencies:
+  - python>=3.6,<3.7
+  - notebook>=5.1
+  - holoviews
+  - geoviews
+  - pandas
+  - xarray
+  - datashader
+  - paramnb
+  - parambokeh
+  - bokeh=0.12.10
+  - networkx
+  - streamz=0.2.0
+  - dask=0.15.4
+  - geopandas
+  - scikit-image
+  - selenium
+  - phantomjs
+  ####################################################################
+  # control over dependencies of our dependencies, (e.g. optional
+  # dependencies of our dependencies, or if we need particular
+  # versions)
+  - fastparquet
+  # earlier one is failing to install on windows
+  - pytest>=3.2
+  - python-snappy
+  - ipywidgets>=6,<7
+  - cffi

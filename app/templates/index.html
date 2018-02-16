@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>UK Road Accidents</title>
+    {{ bokeh_css }}
+    {{ bokeh_js }}
+	<style>
+      {% include 'styles.css' %}
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <h1>UK Road Accidents</h1>
+      <p>by <a target="_blank" href="https://github.com/Atlas7">Johnny Chan</a> | <a href="#">Github Repo</a> | <a href="#">MIT Licence</a><p>
+      <p>Visualize the 136k+ road accidents in the UK during 2016. Use the Interactive Pan and Wheel-zoom tool for data exploration.</p>
+      <p>
+        <a href="https://data.gov.uk/dataset/road-accidents-safety-data">Datasets: Road Safety Data</a>
+      <p>
+      {{ doc }}
+      {{ plot_div|indent(8) }}
+    </div>
+    <div>
+      <p>This is an interactive web application tool that enables big data visualization of the 136k+ UK Road Accidents reported during 2016 (I may expand this to cover a longer period under a separate project).<p>
+      <ul>
+        <li>For high level summary: use the pan and wheel/box zoom tools to interact with the plots. Visualize the overall reported accident distributions, concentrations and locations by zooming and panning at the appropriate levels.</li>
+        <li>For low level investigation: zoom all the way in to visualize the exact location of an individual reported accident.</li>
+      </ul>
+      <p>For more information about the datasets please refer to <a href="https://data.gov.uk/dataset/road-accidents-safety-data">the Road Safety Data Page</a>, which contains datasets for other periods and dimensions.</p>
+      <p>This work is inspired by the <a href="https://github.com/pyviz/pyviz">pyviz</a> tutorial series. It is my hope to incorporate further enhancements to this application, refactor and optimise the codes, and use as a reference baseline template for building other similar applications with even better capabilities.</p>
+      <p>Built with Anaconda Data Science Tools: Bokeh, Datashader, HoloViews, GeoViews, Dask, Pandas</p>
+      <p>More further enhancements to this app to follow.</p>
+    </div>
+    {{ plot_script|indent(8) }}
+  </body>
+</html>
