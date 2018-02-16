@@ -70,9 +70,17 @@ Create a new Heroku app:
 
 ```
 $ heroku login
-$ heroku create -a name-of-your-app
-$ git push heroku master
-$ heroku open
+$ heroku create -a uk-road-accidents-viz
+```
+
+Our git remote should looke like this:
+
+```
+$ git remote -v
+heroku  https://git.heroku.com/uk-road-accidents-viz.git (fetch)
+heroku  https://git.heroku.com/uk-road-accidents-viz.git (push)
+origin  https://github.com/Atlas7/bokeh-app-uk-road-accidents-viz.git (fetch)
+origin  https://github.com/Atlas7/bokeh-app-uk-road-accidents-viz.git (push)
 ```
 
 Ensure our `pyviz` environment is already activated. (i.e. `source activate pyviz`).
