@@ -1,6 +1,6 @@
 # UK Road Accidents Visualization Web Appliaction
 
-![bokeh-app-uk-accidents-viz-v5.gif](./assets/bokeh-app-uk-accidents-viz-v5.gif)
+![bokeh-app-uk-accidents-viz-v6.gif](./assets/bokeh-app-uk-accidents-viz-v6.gif)
 
 This is an interactive web application tool that enables big data visualization of the 136k+ UK Road Accidents reported during 2016 (I may expand this to cover a longer period under a separate project).
 
