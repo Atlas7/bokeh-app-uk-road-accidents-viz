@@ -1,5 +1,7 @@
 FROM heroku/miniconda
 
+# available tags are: 3, latest. (so pretty sure this is Python 3)
+
 # Grab requirements.txt.
 # ADD ./requirements.txt /tmp/requirements.txt
 
@@ -19,7 +21,7 @@ RUN conda config --add channels cball && \
   conda config --add channels conda-forge
 
 # Install conda packages
-RUN conda install -n py36_env "notebook>=5.1" \
+RUN conda install "notebook>=5.1" \
  holoviews geoviews pandas xarray datashader \
  paramnb parambokeh "bokeh=0.12.10" networkx \
  "streamz=0.2.0" "dask=0.15.4" geopandas scikit-image \
