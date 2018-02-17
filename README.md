@@ -133,8 +133,7 @@ $ heroku open
 
 Useful resources:
 
-- [Serving interactive bokeh figure on heroku
-](https://stackoverflow.com/questions/38417200/serving-interactive-bokeh-figure-on-heroku/38447618#38447618): stackoverflow solution.
+- [Serving interactive bokeh figure on heroku](https://stackoverflow.com/questions/38417200/serving-interactive-bokeh-figure-on-heroku/38447618#38447618): stackoverflow solution.
 - [fungai-react-ui](https://github.com/Atlas7/fungai-react-ui): `README` file may come in handy.
 - [conda-buildpack](https://github.com/kennethreitz/conda-buildpack): `README` says we need to have the `conda-requirements` file.
 
