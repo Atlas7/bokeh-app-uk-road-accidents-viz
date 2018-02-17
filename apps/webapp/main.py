@@ -25,6 +25,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
+from os import path
 import pandas as pd
 import dask.dataframe as dd
 import holoviews as hv
@@ -46,6 +47,10 @@ warnings.filterwarnings("ignore")
 # Use Bokeh Backend for HoloViews
 hv.extension('bokeh')
 
+# Get absolute path of this file - I've stolen this code from download_sample_data.py
+here = path.abspath(path.join(path.split(__file__)[0]))
+accidents_file = path.join(here, 'data/dftRoadSafety_Accidents_2016_tiny.pkl')
+
 # Adjust dynspread parameters so our zoomed-in data points don't look too tiny
 dynspread.max_px=30
 dynspread.threshold=0.4
@@ -54,7 +59,8 @@ dynspread.threshold=0.4
 PLOT_WIDTH = 600
 
 # Load data and Datashade it (load Pandas dataframe and convert it to a Dask DataFrame)
-df1 = pd.read_pickle('./data/dftRoadSafety_Accidents_2016_tiny.pkl')
+df1 = pd.read_pickle(accidents_file)
+# df1 = pd.read_pickle('./data/dftRoadSafety_Accidents_2016_tiny.pkl')
 ddf = dd.from_pandas(df1, npartitions=1).persist()
 
 # We will only need the Dask DataFrame from now on. So let's delete the Pandas DataFrame.
@@ -72,7 +78,7 @@ bboxes = {
     "gb_wide": ((-21.709, 15.293), (48.749, 61.502)),
     "london": ((-0.643, 0.434), (51.200, 51.761)),
     "london_2": ((-0.1696, 0.0130), (51.4546, 51.5519)),
-    "london_3": ((-0.1330, -0.0235), (51.4741, 51.5322)),  
+    "london_3": ((-0.1330, -0.0235), (51.4741, 51.5322)),
     "manchester": ((-3.049, -1.505), (52.975, 53.865))
 }
 
@@ -82,7 +88,7 @@ x_range, y_range = tuple(x_range), tuple(y_range)
 
 # Set options for DataShader.
 # TODO: how to make pan and wheel_zoom "on/clicked" by default? (and the rest off/unclicked)
-options = dict(tools=['pan', 'wheel_zoom'], 
+options = dict(tools=['pan', 'wheel_zoom'],
     width=plot_width, height=plot_height, xaxis=None, yaxis=None, bgcolor='black', show_grid=False)
 
 # Our Datashader plot, with additional options
