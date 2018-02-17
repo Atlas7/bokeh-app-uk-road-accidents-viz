@@ -15,10 +15,10 @@ FROM heroku/miniconda
 # RUN conda env create -f /tmp/environment.yml
 
 # Add conda channels
-RUN conda config --add channels cball && \
-  conda config --add channels ioam && \
+RUN conda config --add channels conda-forge && \
   conda config --add channels bokeh && \
-  conda config --add channels conda-forge
+  conda config --add channels ioam && \
+  conda config --add channels cball && \
 
 # Install conda packages
 RUN conda install "notebook>=5.1" \
