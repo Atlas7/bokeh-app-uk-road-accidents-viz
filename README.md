@@ -45,8 +45,6 @@ $ cd apps && bokeh serve webapp --port 5006
 
 See the web app locally at [http://localhost:5006/webapp](http://localhost:5006/webapp)
 
----
-
 ### A note on downloading and pickling data
 
 Note: this step has already been done. So you shall not need to worry about this. But I am documenting this here anyway in case we need to reproduce it how I prepare the source data in the first place.
@@ -65,8 +63,6 @@ $ python pickle_sample_data.py
 ```
 
 Once both steps are done we should expect to see the pickled (`.pkl` ) files in the `apps/webapp/data` directory.
-
----
 
 ## Local Docker Deployment and Test
 
@@ -92,21 +88,15 @@ docker build -t bokeh-app-uk-road-accidents-viz:miniconda-pyviz-1 .
 
 This will build a Docker Image called `bokeh-app-uk-road-accidents-viz` with a tag of `miniconda-pyviz-1`.
 
----
-
 Question: why I name the tag this way?
 
 Answer: the `Dockerfile` is built on top of `continuumio/miniconda` (hence the `miniconda`). The Conda environment (as defined in `environment.ymnl`) is called `pyviz`, copied over from the pyviz](https://github.com/pyviz/pyviz) tutorial series. The `1` at the end is just for us to keep track of Docker images should we decided to try out different things, such as modifying `Dockerfile` contents for experimentation purpose. Without the tag `1` at the end it will simply be set to the default `latest` (if you would just like to keep overwriting the same image, `latest` tag may be the best).
-
----
 
 To see the web app, simply run this (from any local directory - it doesn't matter)
 
 ```
 export PORT=5006 && docker run -i -t -p $PORT:$PORT bokeh-app-uk-road-accidents-viz:miniconda-pyviz-1 /bin/bash -c "source activate pyviz && bokeh serve webapp --port=$PORT --address=0.0.0.0 --usea-xheaders"
 ```
-
----
 
 Question: what does this command mean?
 
@@ -120,8 +110,6 @@ Answer:
 - to explain a bit about the local test command:
   - `source activate pyviz`: to activate our `pyviz` conda environment, which was created at the Docker Image build srage. (and defined by the `environment.yml` file)
   - `bokeh serve webapp --port=$PORT --address=0.0.0.0 --usea-xheaders`: after spinning up the container our work directory is changed to `apps/`. We run this command at this work directory to serve a Bokeh app within the container. Within the container it serve the app at [http://0.0.0.0:$PORT/webapp](http://0.0.0.0:$PORT/webapp). We can access this app at [http://localhost:$PORT/webapp](http://localhost:$PORT/webapp)
-
----
 
 Navigate to [http://localhost:5006/app](http://localhost:5006/app) to view and interact with the web application.
 
