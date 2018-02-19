@@ -39,14 +39,18 @@ USER myuser
 
 # Note: to test locally at http://localhost:5006/webapp, we can either:
 #
-# option 1: invoke docker run on a pre-built image hosted on Heroku Container Registory
-# $ docker run -it -p 5006:5006 registry.heroku.com/uk-road-accidents-viz/web /bin/bash -c "bokeh serve webapp --port=5006 --address=0.0.0.0"
-#
-# or option 2: build container and do a docker run:
+# option 1: build container and do a docker run (build it yourself locally):
 # $ docker build -t bokeh-app-uk-road-accidents-viz .
-# $ docker run -it -p 5006:5006 bokeh-app-uk-road-accidents-viz /bin/bash -c "bokeh serve webapp --port=5006 --address=0.0.0.0"
+# $ docker run -i -t -p 5006:5006 bokeh-app-uk-road-accidents-viz "bokeh serve webapp --port=5006 --address=0.0.0.0"
+#
+# option 2: use the one on dockerhub (built by github user: atlas7)
+# $ docker run -i -t -p 5006:5006 atlas7/bokeh-app-uk-road-accidents-viz "bokeh serve webapp --port=5006 --address=0.0.0.0"
+#
+# option 3: use the one on Heroku Container Registory (built by github user: atlas7)
+# $ docker run -i -t -p 5006:5006 registry.heroku.com/uk-road-accidents-viz/web "bokeh serve webapp --port=5006 --address=0.0.0.0"
+#
 
 # Heroku deployment
+# Note: if you were to deploy this app yourself to say, Heroku, simply replace the host arguments with your Heroku app host name.
 ENTRYPOINT [ "/bin/bash", "-c" ]
-#CMD bokeh serve webapp --port=${PORT} --address=0.0.0.0 --host=desolate-dusk-31283.herokuapp.com
-CMD bokeh serve webapp --port=${PORT} --address=0.0.0.0 --host=uk-road-accidents-viz.herokuapp.com
+CMD bokeh serve webapp --port=${PORT} --address=0.0.0.0 --host=uk-road-accidents-viz.herokuapp.com --host=desolate-dusk-31283.herokuapp.com
