@@ -67,22 +67,13 @@ $ python pickle_sample_data.py
 
 Once both steps are done we should expect to see the pickled (`.pkl` ) files in the `apps/webapp/data` directory.
 
-
-## Local Docker Deployment and Test
-
-
-The eventual deployment option chosen is Heroku (for hosting the app) and Docker (for managing the deployment pipeline).
-
-
 ### Why I choose Heroku and Docker for deployment
 
 The initial deployment option I've chosen is [Heroku](https://www.heroku.com/) - purely driven by its ease of deployment pipeline, free (as in prototyping deployment cost), and familarity - I've used it before in the dployment of [this ReactJS app](https://fungai-react-ui.herokuapp.com/fungpredict).
 
-Option 1: Initially I tried out the [Heroku conda-buildpack](https://github.com/kennethreitz/conda-buildpack) - I had to drop this option in the end due to its inability to pull conda packages from other channels other than the default `continuum` Channel (at the time of writing this). See [this GitHub issue 11](https://github.com/kennethreitz/conda-buildpack/issues/11).
-
-Option 2: I also considered the default Heroku deploy option also which uses vanila `pip` instead of conda. I had to drop this option in the end due to complexity (most Bokeh / Datashader / HoloViews examples are based on Conda packages. To port to using `pip` could be an overhaul).
-
-Option 3:  The `README` file of the conda-buildpack however suggests there is an alternative Heroku-recommended option - [Heroku Docker Deployment](https://devcenter.heroku.com/articles/container-registry-and-runtime#getting-started). This option appears to offer most flexibilty and robustness for both local and remote deployment. Though at the time of writing this my Docker skill was quite basic I believe it could be a good opportunity to learn and pick up this emerging technologies - the long term benefits could be worth it (at the short-term learning curve).
+- Option 1: Initially I tried out the [Heroku conda-buildpack](https://github.com/kennethreitz/conda-buildpack) - I had to drop this option in the end due to its inability to pull conda packages from other channels other than the default `continuum` Channel (at the time of writing this). See [this GitHub issue 11](https://github.com/kennethreitz/conda-buildpack/issues/11).
+- Option 2: I also considered the default Heroku deploy option also which uses vanila `pip` instead of conda. I had to drop this option in the end due to complexity (most Bokeh / Datashader / HoloViews examples are based on Conda packages. To port to using `pip` could be an overhaul).
+- Option 3:  The `README` file of the conda-buildpack however suggests there is an alternative Heroku-recommended option - [Heroku Docker Deployment](https://devcenter.heroku.com/articles/container-registry-and-runtime#getting-started). This option appears to offer most flexibilty and robustness for both local and remote deployment. Though at the time of writing this my Docker skill was quite basic I believe it could be a good opportunity to learn and pick up this emerging technologies - the long term benefits could be worth it (at the short-term learning curve).
 
 This section documents how I deployment a Docker-ized Bokeh app locally (without the Heroku part yet)
 
