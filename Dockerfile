@@ -37,18 +37,16 @@ WORKDIR /opt/apps
 RUN adduser --disabled-login myuser
 USER myuser
 
+# Note: to test locally at http://localhost:5006/webapp, we can either:
 #
-# Note: to test locally we can override the CMD by doing this in terminal.
-# Then go to http://localhost:5006/webapp
+# option 1: invoke docker run on a pre-built image hosted on Heroku Container Registory
+# $ docker run -it -p 5006:5006 registry.heroku.com/uk-road-accidents-viz/web /bin/bash -c "bokeh serve webapp --port=5006 --address=0.0.0.0"
 #
-# docker run -it -p 5006:5006 bokeh-app-uk-road-accidents-viz
-#
-# or
-#
-# docker run -it -p 5006:5006 registry.heroku.com/uk-road-accidents-viz/web
-#
-#
+# or option 2: build container and do a docker run:
+# $ docker build -t bokeh-app-uk-road-accidents-viz .
+# $ docker run -it -p 5006:5006 bokeh-app-uk-road-accidents-viz /bin/bash -c "bokeh serve webapp --port=5006 --address=0.0.0.0"
 
 # Heroku deployment
 ENTRYPOINT [ "/bin/bash", "-c" ]
-CMD [ "source activate pyviz && bokeh serve webapp --port=${PORT:=5006} --address=0.0.0.0" ]
+#CMD bokeh serve webapp --port=${PORT} --address=0.0.0.0 --host=desolate-dusk-31283.herokuapp.com
+CMD bokeh serve webapp --port=${PORT} --address=0.0.0.0 --host=uk-road-accidents-viz.herokuapp.com
