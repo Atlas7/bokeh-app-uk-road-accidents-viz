@@ -20,7 +20,7 @@ Built with Anaconda Data Science Tools: Bokeh, Datashader, HoloViews, GeoViews, 
 
 ---
 
-**Important Notes**: Due to budget free-tier prototyping purpose, these demos may be quite sluggish. The demo will be run much faster on a laptop locally though (with instructions provided a bit further down).
+**Important Notes**: Due to budget free-tier prototyping purpose, these demos may be quite sluggish. The demo will be run much faster on a laptop locally though (with instructions provided a bit further down). Also note that Heroku instances regularly go to "sleep" - if the app fails to zoom / respond, try refreshing the browser, wait a few seconds, and see how it goes again.
 
 ---
 
