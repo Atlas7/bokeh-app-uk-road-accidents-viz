@@ -67,6 +67,10 @@ $ python pickle_sample_data.py
 
 Once both steps are done we should expect to see the pickled (`.pkl` ) files in the `apps/webapp/data` directory.
 
+## Local Docker Deployment and Test
+
+The eventual deployment option chosen is Heroku (for hosting the app) and Docker (for managing the deployment pipeline).
+
 ### Why I choose Heroku and Docker for deployment
 
 The initial deployment option I've chosen is [Heroku](https://www.heroku.com/) - purely driven by its ease of deployment pipeline, free (as in prototyping deployment cost), and familarity - I've used it before in the dployment of [this ReactJS app](https://fungai-react-ui.herokuapp.com/fungpredict).
