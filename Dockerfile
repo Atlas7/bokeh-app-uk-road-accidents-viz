@@ -36,6 +36,10 @@ USER myuser
 # export PORT=5006 && docker run -i -t -p $PORT:$PORT bokeh-app-uk-road-accidents-viz:miniconda-pyviz-1 /bin/bash -c "source activate pyviz && bokeh serve webapp --port=$PORT --address=0.0.0.0 --use-xheaders"
 # or
 # export PORT=5006 && docker run -i -t -p $PORT:$PORT bokeh-app-uk-road-accidents-viz:miniconda-pyviz-1
-
+# or
+# export PORT=5006 && docker run -i -t -p $PORT:$PORT registry.heroku.com/uk-road-accidents-viz/web /bin/bash -c "source activate pyviz && bokeh serve webapp --port=$PORT --address=0.0.0.0 --use-xheaders"
+#
 # Heroku deployment
-CMD [ "source activate pyviz && bokeh serve webapp --port=$PORT --address=0.0.0.0 --use-xheaders --host=uk-road-accidents-viz.herokuapp.com" ]
+#CMD [ "source activate pyviz && bokeh serve webapp --port=$PORT --address=0.0.0.0 --use-xheaders --host=uk-road-accidents-viz.herokuapp.com" ]
+
+CMD [ "source activate pyviz && bokeh serve webapp --port=$PORT --address=0.0.0.0 --use-xheaders" ]

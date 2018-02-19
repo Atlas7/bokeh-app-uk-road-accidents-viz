@@ -1,0 +1,33 @@
+(bokeh-app-uk-road-accidents-viz) johnny@Chuns-MBP bokeh-app-uk-road-accidents-viz (master) $ heroku logs --tail
+2018-02-19T11:14:55.004047+00:00 app[api]: Initial release by user johnnychan0302@gmail.com
+2018-02-19T11:14:55.004047+00:00 app[api]: Release v1 created by user johnnychan0302@gmail.com
+2018-02-19T11:14:55.397642+00:00 app[api]: Enable Logplex by user johnnychan0302@gmail.com
+2018-02-19T11:14:55.397642+00:00 app[api]: Release v2 created by user johnnychan0302@gmail.com
+2018-02-19T12:03:37.604256+00:00 app[api]: Deployed web (ed803b396f01) by user johnnychan0302@gmail.com
+2018-02-19T12:03:37.604256+00:00 app[api]: Release v3 created by user johnnychan0302@gmail.com
+2018-02-19T12:03:37.630881+00:00 app[api]: Scaled to web@1:Free by user johnnychan0302@gmail.com
+2018-02-19T12:04:50.450830+00:00 heroku[web.1]: Starting process with command `source\ activate\ pyviz\ \&\&\ bokeh\ serve\ webapp\ --port\=\58418\ --address\=0.0.0.0\ --use-xheaders\ --host\=uk-road-accidents-viz.herokuapp.com`
+2018-02-19T12:04:51.860513+00:00 app[web.1]: [WARN  tini (4)] Tini is not running as PID 1 and isn't registered as a child subreaper.
+2018-02-19T12:04:51.860541+00:00 app[web.1]: To fix the problem, use the -s option or set the environment variable TINI_SUBREAPER to register Tini as a child subreaper, or run Tini as PID 1.
+2018-02-19T12:04:51.860528+00:00 app[web.1]: Zombie processes will not be re-parented to Tini, so zombie reaping won't work.
+2018-02-19T12:04:51.861068+00:00 app[web.1]: [FATAL tini (5)] exec source activate pyviz && bokeh serve webapp --port=$PORT --address=0.0.0.0 --use-xheaders --host=uk-road-accidents-viz.herokuapp.com failed: No such file or directory
+2018-02-19T12:04:51.905828+00:00 heroku[web.1]: Process exited with status 127
+2018-02-19T12:04:51.968208+00:00 heroku[web.1]: State changed from starting to crashed
+2018-02-19T12:04:51.970152+00:00 heroku[web.1]: State changed from crashed to starting
+2018-02-19T12:06:02.057950+00:00 heroku[web.1]: Starting process with command `source\ activate\ pyviz\ \&\&\ bokeh\ serve\ webapp\ --port\=\51770\ --address\=0.0.0.0\ --use-xheaders\ --host\=uk-road-accidents-viz.herokuapp.com`
+2018-02-19T12:06:04.921637+00:00 heroku[web.1]: Process exited with status 127
+2018-02-19T12:06:04.935926+00:00 heroku[web.1]: State changed from starting to crashed
+2018-02-19T12:06:04.839423+00:00 app[web.1]: [WARN  tini (4)] Tini is not running as PID 1 and isn't registered as a child subreaper.
+2018-02-19T12:06:04.839439+00:00 app[web.1]: Zombie processes will not be re-parented to Tini, so zombie reaping won't work.
+2018-02-19T12:06:04.839451+00:00 app[web.1]: To fix the problem, use the -s option or set the environment variable TINI_SUBREAPER to register Tini as a child subreaper, or run Tini as PID 1.
+2018-02-19T12:06:04.840603+00:00 app[web.1]: [FATAL tini (5)] exec source activate pyviz && bokeh serve webapp --port=$PORT --address=0.0.0.0 --use-xheaders --host=uk-road-accidents-viz.herokuapp.com failed: No such file or directory
+2018-02-19T12:15:28.177056+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=uk-road-accidents-viz.herokuapp.com request_id=1a85f6ed-85dc-4ba1-a611-7d415122cf8c fwd="51.9.252.111" dyno= connect= service= status=503 bytes= protocol=https
+2018-02-19T12:15:28.456175+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=uk-road-accidents-viz.herokuapp.com request_id=d422e39d-e475-4403-8e97-9a9065f5701e fwd="51.9.252.111" dyno= connect= service= status=503 bytes= protocol=https
+2018-02-19T12:15:32.783556+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/webapp" host=uk-road-accidents-viz.herokuapp.com request_id=bfc8e9de-21c9-4692-bc7d-bdea3de475f5 fwd="51.9.252.111" dyno= connect= service= status=503 bytes= protocol=https
+2018-02-19T12:15:32.950964+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=uk-road-accidents-viz.herokuapp.com request_id=b71b2622-dd07-43b7-b7d6-a3bd531f10a4 fwd="51.9.252.111" dyno= connect= service= status=503 bytes= protocol=https
+(bokeh-app-uk-road-accidents-viz) johnny@Chuns-MBP bokeh-app-uk-road-accidents-viz (master) $ export TINI_SUBREAPER=
+(bokeh-app-uk-road-accidents-viz) johnny@Chuns-MBP bokeh-app-uk-road-accidents-viz (master) $ echo TINI_SUBREAPER
+TINI_SUBREAPER
+(bokeh-app-uk-road-accidents-viz) johnny@Chuns-MBP bokeh-app-uk-road-accidents-viz (master) $ echo $TINI_SUBREAPER
+
+(bokeh-app-uk-road-accidents-viz) johnny@Chuns-MBP bokeh-app-uk-road-accidents-viz (master) $
