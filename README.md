@@ -15,11 +15,13 @@ This work is inspired by the [pyviz](https://github.com/pyviz/pyviz) tutorial se
 
 Built with Anaconda Data Science Tools: Bokeh, Datashader, HoloViews, GeoViews, Dask, Pandas
 
+
 ## Workflow
 
 1. Local Conda Development and Test
 2. Local Docker Deployment and Test
 3. Remote Docker Deployment and Test
+
 
 ## Local Conda Development and Test
 
@@ -45,7 +47,8 @@ $ cd apps && bokeh serve webapp --port 5006
 
 See the web app locally at [http://localhost:5006/webapp](http://localhost:5006/webapp)
 
-### A note on downloading and pickling data
+
+### A note on downloading and pickling data
 
 Note: this step has already been done. So you shall not need to worry about this. But I am documenting this here anyway in case we need to reproduce it how I prepare the source data in the first place.
 
@@ -64,9 +67,11 @@ $ python pickle_sample_data.py
 
 Once both steps are done we should expect to see the pickled (`.pkl` ) files in the `apps/webapp/data` directory.
 
+
 ## Local Docker Deployment and Test
 
 The eventual deployment option chosen is Heroku (for hosting the app) and Docker (for managing the deployment pipeline).
+
 
 ### Why I choose Heroku and Docker for deployment
 
@@ -128,7 +133,8 @@ Still a work in progress to get this working.
   - cover longer period,
   - add different views (e.g. breakdown by vehicle types, etc.)
 
-## References
+
+## References
 
 [pyviz](https://github.com/pyviz/pyviz): contains tutorials and reference application templates. I was able to reuse some of the codes and modify as needed.
 
