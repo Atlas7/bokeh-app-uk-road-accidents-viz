@@ -1,4 +1,4 @@
-# UK Road Accidents Visualization Web Appliaction
+# UK Road Accidents Visualization Web Application
 
 ![bokeh-app-uk-accidents-viz-v6.gif](./assets/bokeh-app-uk-accidents-viz-v6.gif)
 
@@ -27,11 +27,12 @@ Built with Anaconda Data Science Tools: Bokeh, Datashader, HoloViews, GeoViews, 
 
 ## Workflow
 
-1. Local Conda Development and Test
-2. Local Docker Deployment and Test
-3. Remote Docker Deployment and Test
+1. [Local Conda Development and Test](#local-dev-test)
+2. [Local Docker Deployment and Test](#local-docker-deploy)
+3. [Remote Docker Deployment and Test](#remote-docker-deploy)
 
 
+<a id="local-dev-test"></a>
 ## Local Conda Development and Test
 
 At the root of the repository, create a Conda environment:
@@ -76,17 +77,19 @@ $ python pickle_sample_data.py
 
 Once both steps are done we should expect to see the pickled (`.pkl` ) files in the `apps/webapp/data` directory.
 
+
+<a id="local-docker-deploy"></a>
 ## Local Docker Deployment and Test
 
 The eventual deployment option chosen is [Heroku](https://www.heroku.com/) (for hosting the app) and Docker (for managing the deployment pipeline). This combo turns out to work quite well for rapid prototyping purpose.
 
 ### Why I choose Heroku and Docker for deployment
 
-Mainly driven by ease of use, free tier, familarity (I've used it before), and plenty of documentations / stackoverflow troubleshoots online. Here summarises some of the decisions I made along the way:
+Mainly driven by ease of use, free tier, familiarity (I've used it before), and plenty of documentations / stackoverflow troubleshoots online. Here summarises some of the decisions I made along the way:
 
 - Option 1: Initially I tried out the [Heroku conda-buildpack](https://github.com/kennethreitz/conda-buildpack) - I had to drop this option in the end due to its inability to pull conda packages from other channels other than the default `continuum` Channel (at the time of writing this). See [this GitHub issue 11](https://github.com/kennethreitz/conda-buildpack/issues/11).
 - Option 2: I also considered the default Heroku deploy option also which uses vanila `pip` instead of conda. I had to drop this option in the end due to complexity (most Bokeh / Datashader / HoloViews examples are based on Conda packages. To port to using `pip` could be an overhaul).
-- Option 3:  The `README` file of the conda-buildpack however suggests there is an alternative Heroku-recommended option - [Heroku Docker Deployment](https://devcenter.heroku.com/articles/container-registry-and-runtime#getting-started). This option appears to offer most flexibilty and robustness for both local and remote deployment. Though at the time of writing this my Docker skill was quite basic I believe it could be a good opportunity to learn and pick up this emerging technologies - the long term benefits could be worth it (at the short-term learning curve).
+- Option 3:  The `README` file of the conda-buildpack however suggests there is an alternative Heroku-recommended option - [Heroku Docker Deployment](https://devcenter.heroku.com/articles/container-registry-and-runtime#getting-started). This option appears to offer most flexibility and robustness for both local and remote deployment. Though at the time of writing this my Docker skill was quite basic I believe it could be a good opportunity to learn and pick up this emerging technology - the long term benefits could be worth it (at the short-term learning curve).
 
 This section documents how I deployment a Docker-ized Bokeh app locally (without the Heroku part yet)
 
@@ -108,15 +111,16 @@ Question: what does this command mean?
 
 Answer:
 
-- we use `docker run` to spin up a the docker image that we built earlier (`bokeh-app-uk-road-accidents-viz:miniconda-pyviz-1`) and create a Docker container (with a random name). This container is effectively our app and runs in an isolated environment.
 - the `docker run` options `-i` (Keep STDIN open even if not attached) and `-t` (Allocate a pseudo-tty), enables us to run the container in an interactive way. Like running a shell. We can view the web GET/POST request logs directly in front of us in the terminal. (and whenever we want to kill the app, we just do a `Ctrl + c`).
 - About the `-p 5006:5006` option: this is Docker way of mapping our localhost (e.g. our laptop) port number (left hand side), to the container port number (right hand side). Port `5006` turns out to be the default port number that Bokeh server uses.
-- the remaining command is our way of overriding the default command to be run at container creation, as defined in the `Dockerfile` - under the line `CMD ["..."]`. (Note: because in our `Dockerfile` we've already specified the `ENTRYPOINT` as `/bin/bash -c`, by default our command will be run in bash shell. Main reason I've done this is for ease of Heroku deployment later on.
+- the remaining command is our way of overriding the default command to be run at container creation, as defined in the `Dockerfile` - under the line `CMD ["..."]`. (Note: because in our `Dockerfile` we've already specified the `ENTRYPOINT` as `/bin/bash -c`, by default our command will be run in bash shell. Main reason I've done this is for ease of Heroku deployment later on. Also note that the Docker image puts us in the working directory where the `webapp` folder will reside.
 - to explain a bit about the local test command:
   - `bokeh serve webapp --port=$PORT --address=0.0.0.0`: after spinning up the container our work directory is changed to `/opt/apps/` (within the container). We run this command at this work directory to serve a Bokeh app within the container. Within the container it serve the app at [http://0.0.0.0:$PORT/webapp](http://0.0.0.0:$PORT/webapp). We can access this app at [http://localhost:$PORT/webapp](http://localhost:$PORT/webapp)
 
 Navigate to [http://localhost:5006/app](http://localhost:5006/app) to view and interact with the web application.
 
+
+<a id="remote-docker-deploy"></a>
 ## Remote Docker Deployment and Test
 
 The [Container Registry & Runtime (Docker Deploys)](https://devcenter.heroku.com/articles/container-registry-and-runtime#pushing-an-image-s) for documentation and [this Bokeh Server Config Doc](https://bokeh.pydata.org/en/latest/docs/user_guide/server.html) are very handy for this deployment process.
