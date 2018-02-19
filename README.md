@@ -120,6 +120,11 @@ Use [Container Registry & Runtime (Docker Deploys)](https://devcenter.heroku.com
 
 Still a work in progress to get this working.
 
+```
+docker tag bokeh-app-uk-road-accidents-viz registry.heroku.com/registry.heroku.com/web
+docker push registry.heroku.com/registry.heroku.com/web
+```
+
 ## Improvement opportunities
 
 - at the time of creating this, the development of the HoloViews-bokeh-datashader combo was truely "bleeding edge". It is likely when you (or the future me) will find much better ways of doing things.
@@ -145,3 +150,5 @@ Still a work in progress to get this working.
 [fungai-react-ui](https://github.com/Atlas7/fungai-react-ui): `README` file may come in handy.
 
 [conda-buildpack](https://github.com/kennethreitz/conda-buildpack): Heroku deployment with just conda (and no docker)
+
+[condas `source activate virtualenv` does not work within Dockerfile](https://stackoverflow.com/questions/37945759/condas-source-activate-virtualenv-does-not-work-within-dockerfile): instead of using `source activate` (which seems to be problematic when run on Heroku), set the `PATH` environmental variable to point to the newly created conda environment - this effectively use whatever in the environment.

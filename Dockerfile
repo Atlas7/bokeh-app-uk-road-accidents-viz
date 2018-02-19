@@ -19,27 +19,36 @@ RUN conda config --add channels conda-forge && \
 # Install Conda packages
 RUN conda env create -f /tmp/environment.yml
 
+# do some conda magic
+ENV PATH /opt/conda/envs/pyviz/bin:$PATH
+ENV CONDA_DEFAULT_ENV pyviz
+ENV CONDA_PREFIX /opt/conda/envs/pyviz
+RUN echo $PATH
+RUN conda env list
+
 # Add our code
 ADD ./apps /opt/apps
 WORKDIR /opt/apps
 
 # Expose is NOT supported by Heroku
-# EXPOSE 8080
+# EXPOSE 5006
 
 # Run the image as a non-root user
 RUN adduser --disabled-login myuser
 USER myuser
 
+#
 # Note: to test locally we can override the CMD by doing this in terminal.
 # Then go to http://localhost:5006/webapp
 #
-# export PORT=5006 && docker run -i -t -p $PORT:$PORT bokeh-app-uk-road-accidents-viz:miniconda-pyviz-1 /bin/bash -c "source activate pyviz && bokeh serve webapp --port=$PORT --address=0.0.0.0 --use-xheaders"
-# or
-# export PORT=5006 && docker run -i -t -p $PORT:$PORT bokeh-app-uk-road-accidents-viz:miniconda-pyviz-1
-# or
-# export PORT=5006 && docker run -i -t -p $PORT:$PORT registry.heroku.com/uk-road-accidents-viz/web /bin/bash -c "source activate pyviz && bokeh serve webapp --port=$PORT --address=0.0.0.0 --use-xheaders"
+# docker run -it -p 5006:5006 bokeh-app-uk-road-accidents-viz
 #
-# Heroku deployment
-#CMD [ "source activate pyviz && bokeh serve webapp --port=$PORT --address=0.0.0.0 --use-xheaders --host=uk-road-accidents-viz.herokuapp.com" ]
+# or
+#
+# docker run -it -p 5006:5006 registry.heroku.com/uk-road-accidents-viz/web
+#
+#
 
-CMD [ "source activate pyviz && bokeh serve webapp --port=$PORT --address=0.0.0.0 --use-xheaders" ]
+# Heroku deployment
+ENTRYPOINT [ "/bin/bash", "-c" ]
+CMD [ "source activate pyviz && bokeh serve webapp --port=${PORT:=5006} --address=0.0.0.0" ]
