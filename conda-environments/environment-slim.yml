@@ -1,0 +1,17 @@
+name: bokeh-app-uk-road-accidents-viz
+channels:
+  - cball
+  - ioam
+  - bokeh
+  - conda-forge
+  - defaults
+dependencies:
+  - python>=3.6,<3.7
+  - holoviews
+  - geoviews
+  - numpy
+  - pandas
+  - datashader
+  - bokeh=0.12.10
+  - streamz=0.2.0
+  - dask=0.15.4

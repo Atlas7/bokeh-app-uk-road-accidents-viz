@@ -1,4 +1,4 @@
-FROM continuumio/miniconda
+FROM continuumio/miniconda:4.3.27
 
 # to resolve the error: ImportError: libGL.so.1: cannot open shared object file: No such file or directory
 RUN apt-get update && apt-get install -y \
@@ -30,12 +30,9 @@ WORKDIR /opt/apps
 RUN adduser --disabled-login myuser
 USER myuser
 
-# Note: to test locally we can override the CMD by doing this in terminal.
-# Then go to http://localhost:5006/webapp
-#
-# export PORT=5006 && docker run -i -t -p $PORT:$PORT bokeh-app-uk-road-accidents-viz:miniconda-pyviz-1 /bin/bash -c "source activate pyviz && bokeh serve webapp --port=$PORT --address=0.0.0.0 --use-xheaders"
-# or
-# export PORT=5006 && docker run -i -t -p $PORT:$PORT bokeh-app-uk-road-accidents-viz:miniconda-pyviz-1
-
 # Heroku deployment
 CMD [ "source activate pyviz && bokeh serve webapp --port=$PORT --address=0.0.0.0 --use-xheaders --host=uk-road-accidents-viz.herokuapp.com" ]
+
+# Note: to test locally we can override the CMD by doing this in terminal.
+# Then go to http://localhost/webapp (i.e. port 80 on mac maps to container port 5006)
+# docker run -i -t -p 80:5006 pyviz:4 /bin/bash -c "source activate pyviz && bokeh serve webapp --port=5006 --address=0.0.0.0"

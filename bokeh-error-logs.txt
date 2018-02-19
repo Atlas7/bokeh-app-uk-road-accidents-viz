@@ -1,0 +1,45 @@
+(pyviz) myuser@1bfa32dac511:/opt/apps$ bokeh serve webapp
+2018-02-17 22:54:00,041 Starting Bokeh server version 0.12.10 (running on Tornado 4.5.3)
+2018-02-17 22:54:00,045 Bokeh app running at: http://localhost:5006/webapp
+2018-02-17 22:54:00,045 Starting Bokeh server with process id: 54
+2018-02-17 22:54:10,389 Error running application handler <bokeh.application.handlers.directory.DirectoryHandler object at 0x7f85f47aa320>: libGL.so.1: cannot open shared object file: No such file or directory
+File "qt_compat.py", line 137, in <module>:
+from PyQt5 import QtCore, QtGui, QtWidgets Traceback (most recent call last):
+  File "/opt/conda/envs/pyviz/lib/python3.6/site-packages/bokeh/application/handlers/code_runner.py", line 125, in run
+    exec(self._code, module.__dict__)
+  File "/opt/apps/webapp/main.py", line 32, in <module>
+    import geoviews as gv
+  File "/opt/conda/envs/pyviz/lib/python3.6/site-packages/geoviews/__init__.py", line 15, in <module>
+    from . import plotting                              # noqa (API import)
+  File "/opt/conda/envs/pyviz/lib/python3.6/site-packages/geoviews/plotting/__init__.py", line 1, in <module>
+    from . import mpl # noqa
+  File "/opt/conda/envs/pyviz/lib/python3.6/site-packages/geoviews/plotting/mpl/__init__.py", line 17, in <module>
+    from holoviews.plotting.mpl import (ElementPlot, ColorbarPlot, PointPlot,
+  File "/opt/conda/envs/pyviz/lib/python3.6/site-packages/holoviews/plotting/mpl/__init__.py", line 12, in <module>
+    from .annotation import * # noqa (API import)
+  File "/opt/conda/envs/pyviz/lib/python3.6/site-packages/holoviews/plotting/mpl/annotation.py", line 6, in <module>
+    from .element import ElementPlot
+  File "/opt/conda/envs/pyviz/lib/python3.6/site-packages/holoviews/plotting/mpl/element.py", line 6, in <module>
+    import matplotlib.pyplot as plt
+  File "/opt/conda/envs/pyviz/lib/python3.6/site-packages/matplotlib/pyplot.py", line 116, in <module>
+    _backend_mod, new_figure_manager, draw_if_interactive, _show = pylab_setup()
+  File "/opt/conda/envs/pyviz/lib/python3.6/site-packages/matplotlib/backends/__init__.py", line 60, in pylab_setup
+    [backend_name], 0)
+  File "/opt/conda/envs/pyviz/lib/python3.6/site-packages/matplotlib/backends/backend_qt5agg.py", line 16, in <module>
+    from .backend_qt5 import (
+  File "/opt/conda/envs/pyviz/lib/python3.6/site-packages/matplotlib/backends/backend_qt5.py", line 18, in <module>
+    import matplotlib.backends.qt_editor.figureoptions as figureoptions
+  File "/opt/conda/envs/pyviz/lib/python3.6/site-packages/matplotlib/backends/qt_editor/figureoptions.py", line 20, in <module>
+    import matplotlib.backends.qt_editor.formlayout as formlayout
+  File "/opt/conda/envs/pyviz/lib/python3.6/site-packages/matplotlib/backends/qt_editor/formlayout.py", line 56, in <module>
+    from matplotlib.backends.qt_compat import QtGui, QtWidgets, QtCore
+  File "/opt/conda/envs/pyviz/lib/python3.6/site-packages/matplotlib/backends/qt_compat.py", line 137, in <module>
+    from PyQt5 import QtCore, QtGui, QtWidgets
+ImportError: libGL.so.1: cannot open shared object file: No such file or directory
+
+2018-02-17 22:54:10,401 200 GET /webapp (172.17.0.1) 2786.69ms
+2018-02-17 22:54:10,940 101 GET /webapp/ws?bokeh-protocol-version=1.0&bokeh-session-id=uIoP9Z7lFsTPAJ8vxd3Jwl2jb7og1AB9D6zy9UPSmuHJ (172.17.0.1) 1.32ms
+2018-02-17 22:54:10,940 WebSocket connection opened
+2018-02-17 22:54:10,941 ServerConnection created
+^C
+Interrupted, shutting down
