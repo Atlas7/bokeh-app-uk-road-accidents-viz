@@ -70,6 +70,7 @@ Once both steps are done we should expect to see the pickled (`.pkl` ) files in 
 
 ## Local Docker Deployment and Test
 
+
 The eventual deployment option chosen is Heroku (for hosting the app) and Docker (for managing the deployment pipeline).
 
 
