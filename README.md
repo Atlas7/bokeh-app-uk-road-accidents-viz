@@ -35,8 +35,6 @@ This dev / deploy workflow is largely inspired by [pyviz workflow introduction t
 4. [Local Docker App Deployment and Test](#local-docker-deploy)
 5. [Remote Docker App Deployment and Test](#remote-docker-deploy)
 
-Enjoy!
-
 <a id="local-conda"></a>
 ## Create Local Conda Environment
 
