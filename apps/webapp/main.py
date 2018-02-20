@@ -95,7 +95,6 @@ options = dict(tools=['pan', 'wheel_zoom'],
 shaded = datashade(points, cmap=cm(Hot,0.1, 0.95), x_range=x_range, y_range=y_range).opts(plot=options)
 
 # Define background maps (tiles) for our Datashader to overlay on later
-STAMEN_TERRAIN
 tiles = {'OpenMap': WMTSTileSource(url='http://c.tile.openstreetmap.org/{Z}/{X}/{Y}.png'),
          'ESRI': WMTSTileSource(url='https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{Z}/{Y}/{X}.jpg'),
          'Wikipedia': WMTSTileSource(url='https://maps.wikimedia.org/osm-intl/{Z}/{X}/{Y}@2x.png'),
