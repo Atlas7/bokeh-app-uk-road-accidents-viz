@@ -66,6 +66,7 @@ $ jupyter notebook
 
 I've put together a Jupyter Notebook at the root of the repository: [Prototype A Bokeh Web Application in a Jupyter Notebook](./prototype-a-bokeh-web-app-in-a-jupyter-notebook.ipynb). Take a look - effectively we are building out what our Bokeh App may look like, before a full-fledge web application development and deployment.
 
+Alternatively, you can [read the notebook via nbviewer here](https://nbviewer.jupyter.org/github/Atlas7/bokeh-app-uk-road-accidents-viz/blob/master/prototype-a-bokeh-web-app-in-a-jupyter-notebook.ipynb) which may be better formatted as it's pre-rendered.
 
 <a id="local-dev-test"></a>
 ## Local Conda App Development and Test
