@@ -27,13 +27,15 @@ Built with Anaconda Data Science Tools: Bokeh, Datashader, HoloViews, GeoViews, 
 
 ## Workflow
 
-1. [Local Conda Development and Test](#local-dev-test)
-2. [Local Docker Deployment and Test](#local-docker-deploy)
-3. [Remote Docker Deployment and Test](#remote-docker-deploy)
+1. [Create Local Conda Environment](#local-conda)
+2. [Local Conda Jupyter Notebook Prototype](#local-jupyter)
+3. [Local Conda App Development and Test](#local-dev-test)
+4. [Local Docker App Deployment and Test](#local-docker-deploy)
+5. [Remote Docker App Deployment and Test](#remote-docker-deploy)
 
 
-<a id="local-dev-test"></a>
-## Local Conda Development and Test
+<a id="local-conda"></a>
+## Create Local Conda Environment
 
 At the root of the repository, create a Conda environment:
 
@@ -43,16 +45,39 @@ $ conda env create -f environment.yml
 
 This will create a conda environment called `pyviz`, which I copied over from the [pyviz](https://github.com/pyviz/pyviz) tutorial series. It contains all the big data visualization tools (including Bokeh, HolovViews, Datashader, Dask, etc.)
 
-Activate the conda environment:
+Activate the conda environment to make the entire Python Data Science suite available in the terminal:
 
 ```
 $ source activate pyviz
 ```
 
-Serve the bokeh app:
+<a id="local-jupyter"></a>
+## Local Conda Jupyter Notebook Prototype
+
+(To learn about prototyping with a Jupyter Notebook) at the root of the repository, activate conda environment and start Jupyter Notebook:
 
 ```
-$ cd apps && bokeh serve webapp --port 5006
+$ source activate pyviz
+$ jupyter notebook
+```
+
+I've put together a Jupyter Notebook at the root of the repository: [Prototype A Bokeh Web Application in a Jupyter Notebook](./prototype-a-bokeh-web-app-in-a-jupyter-notebook.ipynb). Take a look - effectively we are building out what our Bokeh App may look like, before a full-fledge web application development and deployment.
+
+
+<a id="local-dev-test"></a>
+## Local Conda App Development and Test
+
+At the root of the repository, activate the conda environment:
+
+```
+$ source activate pyviz
+```
+
+Navigate to the `apps` diretory and serve the bokeh app:
+
+```
+$ cd apps
+$ bokeh serve webapp --port 5006
 ```
 
 See the web app locally at [http://localhost:5006/webapp](http://localhost:5006/webapp)
@@ -79,7 +104,7 @@ Once both steps are done we should expect to see the pickled (`.pkl` ) files in 
 
 
 <a id="local-docker-deploy"></a>
-## Local Docker Deployment and Test
+## Local Docker App Deployment and Test
 
 The eventual deployment option chosen is [Heroku](https://www.heroku.com/) (for hosting the app) and Docker (for managing the deployment pipeline). This combo turns out to work quite well for rapid prototyping purpose.
 
@@ -121,7 +146,7 @@ Navigate to [http://localhost:5006/app](http://localhost:5006/app) to view and i
 
 
 <a id="remote-docker-deploy"></a>
-## Remote Docker Deployment and Test
+## Remote Docker App Deployment and Test
 
 The [Container Registry & Runtime (Docker Deploys)](https://devcenter.heroku.com/articles/container-registry-and-runtime#pushing-an-image-s) for documentation and [this Bokeh Server Config Doc](https://bokeh.pydata.org/en/latest/docs/user_guide/server.html) are very handy for this deployment process.
 
