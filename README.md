@@ -27,12 +27,15 @@ Built with Anaconda Data Science Tools: Bokeh, Datashader, HoloViews, GeoViews, 
 
 ## Workflow
 
+This dev / deploy workflow is largely inspired by [pyviz workflow introduction tutorial](https://pyviz.github.io/pyviz/tutorial/01_Workflow_Introduction.html):
+
 1. [Create Local Conda Environment](#local-conda)
 2. [Local Conda Jupyter Notebook Prototype](#local-jupyter)
 3. [Local Conda App Development and Test](#local-dev-test)
 4. [Local Docker App Deployment and Test](#local-docker-deploy)
 5. [Remote Docker App Deployment and Test](#remote-docker-deploy)
 
+Enjoy!
 
 <a id="local-conda"></a>
 ## Create Local Conda Environment
