@@ -20,7 +20,7 @@ Built with Anaconda Data Science Tools: Bokeh, Datashader, HoloViews, GeoViews, 
 
 ---
 
-**Important Notes**: Due to budget free-tier prototyping purpose, these demos may be quite sluggish. The demo will be run much faster on a laptop locally though (with instructions provided a bit further down). Also note that Heroku instances regularly go to "sleep" - if the app fails to zoom / respond, try refreshing the browser, wait a few seconds, and see how it goes again.
+**Important Notes**: Due to free-tier heroku instance / rapid prototyping purpose, the demo may be quite sluggish. It should however run much faster on a laptop locally though (with instructions provided a bit further down). Also note that the free-tier Heroku instances regularly go to "sleep" - if the app fails to zoom / respond, try refreshing the browser, wait a few seconds, and see how it goes again. Expect longer wait time when the app spin up for the first time (to let Heroku instance to "wake up").
 
 ---
 
@@ -41,7 +41,7 @@ At the root of the repository, create a Conda environment:
 $ conda env create -f environment.yml
 ```
 
-This will create a conda environment called `pyviz`, which I copied over from the pyviz](https://github.com/pyviz/pyviz) tutorial series. It contains all the big data visualization tools (including Bokeh, HolovViews, Datashader, Dask, etc.)
+This will create a conda environment called `pyviz`, which I copied over from the [pyviz](https://github.com/pyviz/pyviz) tutorial series. It contains all the big data visualization tools (including Bokeh, HolovViews, Datashader, Dask, etc.)
 
 Activate the conda environment:
 
